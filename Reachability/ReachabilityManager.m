@@ -101,9 +101,14 @@
 -(void)stop
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kReachabilityChangedNotification object:nil];
-    
-    [self.hostReachability stopNotifier];
-    [self.internetReachability stopNotifier];
+    if(self.hostReachability)
+    {
+        [self.hostReachability stopNotifier];
+    }
+    if(self.internetReachability)
+    {
+        [self.internetReachability stopNotifier];
+    }
 }
 
 @end
